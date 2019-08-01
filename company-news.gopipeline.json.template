@@ -64,6 +64,41 @@
       ]
     },
     {
+      "name": "testStage",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "approval": {
+        "type": "success",
+        "users": [],
+        "roles": []
+      },
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "test",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": "0",
+          "timeout": 0.0,
+          "tasks": [
+            {
+              "command": "bash",
+              "timeout": -1.0,
+              "arguments": [
+                "./bin/test.sh"
+              ],
+              "run_if": "passed",
+              "type": "exec"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "deployStage",
       "fetch_materials": true,
       "never_cleanup_artifacts": false,
@@ -76,7 +111,7 @@
       "environment_variables": [],
       "jobs": [
         {
-          "name": "deploy-__GIT_BRANCH__",
+          "name": "deployApp-__GIT_BRANCH__",
           "environment_variables": [
             {
               "name": "WORK_DIR",
@@ -113,9 +148,52 @@
               "type": "fetch"
             },
             {
-              "command": "deploy.sh",
+              "command": "bash",
               "timeout": -1.0,
-              "arguments": [],
+              "arguments": [
+                "./bin/app_init.sh",
+                "stop"
+              ],
+              "run_if": "passed",
+              "type": "exec"
+            },
+            {
+              "command": "bash",
+              "timeout": -1.0,
+              "arguments": [
+                "./bin/deploy_app.sh"
+              ],
+              "run_if": "passed",
+              "type": "exec"
+            },
+            {
+              "command": "bash",
+              "timeout": -1.0,
+              "arguments": [
+                "./bin/app_init.sh",
+                "start"
+              ],
+              "run_if": "passed",
+              "type": "exec"
+            }
+          ]
+        },
+        {
+          "name": "deployStaticFile",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": "0",
+          "timeout": 0.0,
+          "tasks": [
+            {
+              "command": "bash",
+              "timeout": -1.0,
+              "arguments": [
+                "./bin/deploy_static_file.sh"
+              ],
               "run_if": "passed",
               "type": "exec"
             }
