@@ -22,6 +22,7 @@ docker build . -t company-news-app-container:latest && \
 docker run -it --rm --name company-news-app-container \
   -p "8153:8153" -p "18080:18080" -p "18081:18081" \
   company-news-app-container:latest
+  /bin/bash
 ```
 
 Then type `install.sh` in container, wait for installation complete.

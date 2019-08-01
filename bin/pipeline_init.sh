@@ -14,9 +14,9 @@
 #
 
 __ENV__="online"
-__PORT__="18081"
-__GIT_REPO__="https://github.com/zhangyile/company-news-test.git"
-__GIT_BRANCH__="dev"
+__PORT__="18080"
+__GIT_REPO__="https://github.com/zhangyile/company-news-test-1.git"
+__GIT_BRANCH__="master"
 __INDEX_JAR__="companyNews-0.0.1-SNAPSHOT.jar"
 __WORK_DIR__="/app/companyNews/${__GIT_BRANCH__}"
 

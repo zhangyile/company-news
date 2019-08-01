@@ -1,6 +1,6 @@
 {
   "group": "defaultGroup",
-  "name": "company-news-dev",
+  "name": "company-news-master",
   "display_order_weight": -1.0,
   "label_template": "${COUNT}",
   "lock_behavior": "none",
@@ -8,15 +8,15 @@
   "parameters": [],
   "materials": [
     {
-      "url": "https://github.com/zhangyile/company-news-test.git",
-      "branch": "dev",
+      "url": "https://github.com/zhangyile/company-news-test-1.git",
+      "branch": "master",
       "shallow_clone": false,
       "filter": {
         "ignore": [],
         "whitelist": []
       },
       "auto_update": true,
-      "name": "company-news-dev",
+      "name": "company-news-master",
       "type": "git"
     }
   ],
@@ -111,11 +111,11 @@
       "environment_variables": [],
       "jobs": [
         {
-          "name": "deployApp-dev",
+          "name": "deployApp-master",
           "environment_variables": [
             {
               "name": "WORK_DIR",
-              "value": "/app/companyNews/dev"
+              "value": "/app/companyNews/master"
             },
             {
               "name": "ENV",
@@ -123,7 +123,7 @@
             },
             {
               "name": "PORT",
-              "value": "18081"
+              "value": "18080"
             },
             {
               "name": "INDEX_JAR",
