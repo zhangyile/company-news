@@ -8,7 +8,7 @@ public class CompanyNewsController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot! HELLO World";
+        return "Greetings from Spring Boot! Hello World";
     }
 
 }

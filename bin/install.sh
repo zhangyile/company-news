@@ -17,7 +17,7 @@ yum -y install maven
 
 # install gocd
 curl https://download.gocd.org/gocd.repo -o /etc/yum.repos.d/gocd.repo
-yum install -y go-server go-agent
+yum install -y go-server go-agent sysvinit-tools
 
 /etc/init.d/go-server start 
 /etc/init.d/go-agent start 
