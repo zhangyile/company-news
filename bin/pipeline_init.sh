@@ -2,15 +2,15 @@
 
 
 __GIT_REPO__="https://github.com/zhangyile/company-news-test.git"
-__GIT_BRANCH__="master"
+__GIT_BRANCH__="dev"
 __ENV__="online"
-__PORT__="18080"
+__PORT__="18081"
 __INDEX_JAR__="companyNews-0.0.1-SNAPSHOT.jar"
 __WORK_DIR__="/app/companyNews/${__GIT_BRANCH__}"
 
 
 TEMPLATE_FILE="company-news.gopipeline.json.template"
-OUTPUT_FILE="company-news.${__GIT_BRANCH__}.gopipeline.json"
+OUTPUT_FILE="company-news.gopipeline.json"
 
 if [[ ! -f "${TEMPLATE_FILE}" ]]; then
     echo "[ERR]: Can't find template file."
