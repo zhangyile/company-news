@@ -1,0 +1,127 @@
+{
+  "group": "defaultGroup",
+  "name": "company-news",
+  "display_order_weight": -1.0,
+  "label_template": "${COUNT}",
+  "lock_behavior": "none",
+  "environment_variables": [],
+  "parameters": [],
+  "materials": [
+    {
+      "url": "__GIT_REPO__",
+      "branch": "__GIT_BRANCH__",
+      "shallow_clone": false,
+      "filter": {
+        "ignore": [],
+        "whitelist": []
+      },
+      "auto_update": true,
+      "name": "company-news-__GIT_BRANCH__",
+      "type": "git"
+    }
+  ],
+  "stages": [
+    {
+      "name": "packageStage",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "approval": {
+        "type": "success",
+        "users": [],
+        "roles": []
+      },
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "package",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [
+            {
+              "source": "target",
+              "destination": "",
+              "type": "build"
+            }
+          ],
+          "properties": [],
+          "run_instance_count": "0",
+          "timeout": 0.0,
+          "tasks": [
+            {
+              "command": "mvn",
+              "timeout": -1.0,
+              "arguments": [
+                "clean",
+                "package"
+              ],
+              "run_if": "passed",
+              "type": "exec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deployStage",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "approval": {
+        "type": "success",
+        "users": [],
+        "roles": []
+      },
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "deploy-__GIT_BRANCH__",
+          "environment_variables": [
+            {
+              "name": "WORK_DIR",
+              "value": "__WORK_DIR__"
+            },
+            {
+              "name": "ENV",
+              "value": "__ENV__"
+            },
+            {
+              "name": "PORT",
+              "value": "__PORT__"
+            },
+            {
+              "name": "INDEX_JAR",
+              "value": "__INDEX_JAR__"
+            }
+          ],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": "0",
+          "timeout": 0.0,
+          "tasks": [
+            {
+              "source": "target",
+              "is_source_a_file": false,
+              "destination": "",
+              "pipeline": "",
+              "stage": "packageStage",
+              "job": "package",
+              "run_if": "passed",
+              "type": "fetch"
+            },
+            {
+              "command": "deploy.sh",
+              "timeout": -1.0,
+              "arguments": [],
+              "run_if": "passed",
+              "type": "exec"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
