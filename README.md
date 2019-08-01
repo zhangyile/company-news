@@ -21,7 +21,7 @@ Type below command to build image and start.
 docker build . -t company-news-app-container:latest && \
 docker run -it --rm --name company-news-app-container \
   -p "8153:8153" -p "18080:18080" -p "18081:18081" \
-  company-news-app-container:latest
+  company-news-app-container:latest \
   /bin/bash
 ```
 
