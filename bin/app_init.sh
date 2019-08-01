@@ -58,35 +58,32 @@ status() {
 }
 
 # Main
-main() {
-    LogFile="${WORK_DIR}/logs/start.log"
-    mkdir -p ${WORK_DIR}/logs
-    
-    myPrint "WORK_DIR: $WORK_DIR" 
-    start_cmd="java -Dspring.profiles.active=${ENV} -Dserver.port=${PORT} -jar ${INDEX_JAR}"
-    myPrint "start_cmd: ($start_cmd)"
-    
-    checkParams
-    case "$1" in
-        start)
-            start
-            ;;
-        stop)
-            stop
-            ;;
-        restart)
-            stop
-            start
-            ;;
-        status)
-            status
-            ;;
-        *)
-            echo "Usage app_init.sh [start|stop|restart|status]"
-            exit 1
-            ;;
-    esac
-}
+LogFile="${WORK_DIR}/logs/start.log"
+mkdir -p ${WORK_DIR}/logs
 
-main
+myPrint "WORK_DIR: $WORK_DIR" 
+start_cmd="java -Dspring.profiles.active=${ENV} -Dserver.port=${PORT} -jar ${INDEX_JAR}"
+myPrint "start_cmd: ($start_cmd)"
+
+checkParams
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage app_init.sh [start|stop|restart|status]"
+        exit 1
+        ;;
+esac
+
 exit 0
