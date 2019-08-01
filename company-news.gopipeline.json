@@ -86,11 +86,9 @@
           "timeout": 0.0,
           "tasks": [
             {
-              "command": "bash",
+              "command": "./bin/test.sh",
               "timeout": -1.0,
-              "arguments": [
-                "./bin/test.sh"
-              ],
+              "arguments": [],
               "run_if": "passed",
               "type": "exec"
             }
@@ -148,29 +146,25 @@
               "type": "fetch"
             },
             {
-              "command": "bash",
+              "command": "./bin/app_init.sh",
               "timeout": -1.0,
               "arguments": [
-                "./bin/app_init.sh",
                 "stop"
               ],
               "run_if": "passed",
               "type": "exec"
             },
             {
-              "command": "bash",
+              "command": "./bin/deploy_app.sh",
               "timeout": -1.0,
-              "arguments": [
-                "./bin/deploy_app.sh"
-              ],
+              "arguments": [],
               "run_if": "passed",
               "type": "exec"
             },
             {
-              "command": "bash",
+              "command": "./bin/app_init.sh",
               "timeout": -1.0,
               "arguments": [
-                "./bin/app_init.sh",
                 "start"
               ],
               "run_if": "passed",
@@ -189,11 +183,9 @@
           "timeout": 0.0,
           "tasks": [
             {
-              "command": "bash",
+              "command": "./bin/deploy_static_file.sh",
               "timeout": -1.0,
-              "arguments": [
-                "./bin/deploy_static_file.sh"
-              ],
+              "arguments": [],
               "run_if": "passed",
               "type": "exec"
             }
