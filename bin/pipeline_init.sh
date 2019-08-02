@@ -15,7 +15,7 @@
 
 __ENV__="online"
 __PORT__="18080"
-__GIT_REPO__="https://github.com/zhangyile/company-news-test-1.git"
+__GIT_REPO__=""
 __GIT_BRANCH__="master"
 __INDEX_JAR__="companyNews-0.0.1-SNAPSHOT.jar"
 __WORK_DIR__="/app/companyNews/${__GIT_BRANCH__}"
@@ -26,6 +26,10 @@ OUTPUT_FILE="company-news.gopipeline.json"
 
 if [[ ! -f "${TEMPLATE_FILE}" ]]; then
     echo "[ERR]: Can't find TEMPLATE_FILE(${TEMPLATE_FILE})."
+    exit 1
+fi
+if [[ -z "${__GIT_REPO__}" ]]; then
+    echo "[ERR]: Please declare variables of __GIT_REPO__(${__GIT_REPO__})."
     exit 1
 fi
 
